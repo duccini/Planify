@@ -1,18 +1,8 @@
 import React from 'react';
-
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import Onboarding from './src/screens/auth/Onboarding';
 
 function App() {
-  return (
-    <SafeAreaView>
-      <StatusBar />
-      <View>
-        <Text>Hello World!</Text>
-      </View>
-    </SafeAreaView>
-  );
+  return <Onboarding />;
 }
-
-const styles = StyleSheet.create({});
 
 export default App;
