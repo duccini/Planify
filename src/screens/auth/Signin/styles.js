@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    backgroundColor: colors.white,
     paddingHorizontal: 32,
     paddingBottom: 60,
   },

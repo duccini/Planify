@@ -1,8 +1,8 @@
 import React from 'react';
-import Onboarding from './src/screens/auth/Onboarding';
+import Routes from './src/routes/indes';
 
 function App() {
-  return <Onboarding />;
+  return <Routes />;
 }
 
 export default App;
