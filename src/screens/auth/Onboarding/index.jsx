@@ -24,7 +24,7 @@ const Onboarding = () => {
         </Text>
 
         <Button>Log in</Button>
-        <Button>Get startted</Button>
+        <Button type="blue">Get startted</Button>
       </View>
     </View>
   );

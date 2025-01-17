@@ -16,10 +16,14 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
 
+  blueBg: {
+    backgroundColor: colors.blue,
+  },
+
   text: {
     color: colors.white,
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: 'bold',
   },
 });
 
