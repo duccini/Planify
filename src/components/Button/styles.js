@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 16,
-    width: '80%',
     alignSelf: 'center',
     borderRadius: 10,
     padding: 13,
     marginVertical: 8,
+
+    width: '100%',
   },
 
   blueBg: {
