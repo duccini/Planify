@@ -1,8 +1,21 @@
 import React from 'react';
-import Routes from './src/routes/indes';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import Routes from './src/routes';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#ffffff',
+  },
+};
 
 function App() {
-  return <Routes />;
+  return (
+    <NavigationContainer theme={theme}>
+      <Routes />
+    </NavigationContainer>
+  );
 }
 
 export default App;
