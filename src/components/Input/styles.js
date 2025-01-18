@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import colors from '../../styles/colors';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   input: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 13,
     borderRadius: 10,
-    color: colors.grey,
+    color: colors.black,
     marginVertical: 6,
     fontSize: 16,
   },

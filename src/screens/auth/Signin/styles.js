@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import colors from '../../../styles/colors';
+import colors from '../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     color: colors.midGrey,
     textAlign: 'center',
     fontSize: 16,
-    marginTop: 28,
+    marginTop: 16,
   },
 
   footerLink: {

@@ -3,7 +3,7 @@ import React, {memo} from 'react';
 const {TextInput} = require('react-native');
 
 import styles from './styles';
-import colors from '../../styles/colors';
+import colors from '../../constants/colors';
 
 const Input = ({...props}) => {
   return (
