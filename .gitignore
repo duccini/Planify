@@ -1,3 +1,6 @@
+# Firebase files
+/android/app/google-services.json
+
 # Env files
 .env
 
