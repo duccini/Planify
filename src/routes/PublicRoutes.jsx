@@ -7,7 +7,7 @@ import Signup from '../screens/auth/Signup';
 
 const Stack = createStackNavigator();
 
-const StackRoutes = () => {
+const PublicRoutes = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen component={Onboarding} name="Onboarding" />
@@ -17,4 +17,4 @@ const StackRoutes = () => {
   );
 };
 
-export default memo(StackRoutes);
+export default memo(PublicRoutes);

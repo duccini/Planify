@@ -4,8 +4,8 @@ import React, {memo, useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
 import 'react-native-gesture-handler';
 
-import DrawerRoutes from './DrawerRoutes';
-import StackRoutes from './StackRoutes';
+import PublicRoutes from './PublicRoutes';
+import PrivateRoutes from './PrivateRoutes';
 
 const Routes = () => {
   // Set an initializing state whilst Firebase connects
@@ -32,11 +32,11 @@ const Routes = () => {
 
   // Private Routes
   if (user) {
-    return <DrawerRoutes />;
+    return <PrivateRoutes />;
   }
 
   // Public Routes
-  return <StackRoutes />;
+  return <PublicRoutes />;
 };
 
 export default memo(Routes);
