@@ -1,25 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, {memo, useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
 import 'react-native-gesture-handler';
 
-import {createStackNavigator} from '@react-navigation/stack';
-import Onboarding from '../screens/auth/Onboarding';
-import Signin from '../screens/auth/Signin';
-import Signup from '../screens/auth/Signup';
-import {Text} from 'react-native';
-
-const Stack = createStackNavigator();
+import DrawerRoutes from './DrawerRoutes';
+import StackRoutes from './StackRoutes';
 
 const Routes = () => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
-  console.log('user: ', user);
-
   // Handle user state changes
-  function handleAuthStateChanged(user) {
-    setUser(user);
+  function handleAuthStateChanged(userData) {
+    setUser(userData);
     if (initializing) {
       setInitializing(false);
     }
@@ -35,29 +30,13 @@ const Routes = () => {
     return null;
   }
 
+  // Private Routes
   if (user) {
-    const logout = () => {
-      auth()
-        .signOut()
-        .then(() => console.log('User signed out!'));
-    };
-    return (
-      <>
-        <Text style={{margin: 40}}>Welcome</Text>
-        <Text onPress={logout} style={{marginHorizontal: 40}}>
-          Logout
-        </Text>
-      </>
-    );
+    return <DrawerRoutes />;
   }
 
-  return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen component={Onboarding} name="Onboarding" />
-      <Stack.Screen component={Signin} name="Signin" />
-      <Stack.Screen component={Signup} name="Signup" />
-    </Stack.Navigator>
-  );
+  // Public Routes
+  return <StackRoutes />;
 };
 
 export default memo(Routes);
