@@ -1,6 +1,16 @@
 # Planify
 
-A TODO app with a Firebase API
+A TODO app with a Firebase Serveless Backend
+
+--
+
+## Features:
+
+[X] - Stack Navigation
+[X] - Drawer Navigation
+[X] - Tab Navigation
+[X] - Firebase Auth
+[X] - Firebase Store
 
 ## Step 1: Start the Metro Server
 
