@@ -3,6 +3,7 @@ import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   link: {
+    width: 200,
     color: colors.black,
     fontWeight: '500',
     fontSize: 16,
