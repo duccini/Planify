@@ -4,6 +4,7 @@ import {SafeAreaView, ScrollView, Text} from 'react-native';
 import Header from '@components/Header';
 import styles from './styles';
 import PlusIcon from '@components/PlusIcon';
+import Title from '@components/Title';
 
 const Tasks = () => {
   return (
@@ -11,7 +12,7 @@ const Tasks = () => {
       <Header title="Tasks" />
 
       <ScrollView>
-        <Text>Tasks</Text>
+        <Title type="thin" text="To Do Tasks" />
       </ScrollView>
 
       <PlusIcon />

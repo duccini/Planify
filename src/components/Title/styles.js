@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
     color: colors.black,
     paddingVertical: 24,
   },
+
+  thin: {
+    fontSize: 24,
+    fontWeight: '300',
+    color: colors.purple,
+  },
 });
 
 export default styles;

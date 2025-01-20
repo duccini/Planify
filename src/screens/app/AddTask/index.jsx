@@ -3,6 +3,7 @@ import React, {memo} from 'react';
 
 import {Pressable, SafeAreaView, Image} from 'react-native';
 import styles from './styles';
+import Title from '@components/Title';
 
 const AddTasks = () => {
   const navigation = useNavigation();
@@ -19,6 +20,8 @@ const AddTasks = () => {
         onPress={handleGoBack}>
         <Image style={styles.icon} source={require('@assets/leftArrow.png')} />
       </Pressable>
+
+      <Title type="thin" text="Add New Task" />
     </SafeAreaView>
   );
 };

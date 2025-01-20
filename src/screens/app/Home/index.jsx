@@ -5,6 +5,7 @@ import Header from '@components/Header';
 import PlusIcon from '@components/PlusIcon';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
+import Title from '@components/Title';
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
       <Header title="Home" />
 
       <ScrollView>
-        <Text>Home</Text>
+        <Title type="thin" text="Daily Tasks" />
       </ScrollView>
 
       <PlusIcon />

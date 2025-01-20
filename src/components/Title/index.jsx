@@ -3,8 +3,12 @@ import {Text} from 'react-native';
 
 import styles from './styles';
 
-const Title = ({text, style}) => {
-  return <Text style={[styles.title, style]}>{text}</Text>;
+const Title = ({text, type}) => {
+  return (
+    <Text style={[styles.title, type === 'thin' ? styles.thin : {}]}>
+      {text}
+    </Text>
+  );
 };
 
 export default memo(Title);
