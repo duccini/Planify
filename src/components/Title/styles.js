@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '300',
     color: colors.purple,
+    marginHorizontal: 24,
   },
 });
 
