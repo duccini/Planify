@@ -1,6 +1,7 @@
 import React, {memo, useState} from 'react';
 import {Pressable, SafeAreaView, Image, Text, View, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 import moment from 'moment';
 
 import Title from '@components/Title';
@@ -40,6 +41,21 @@ const AddTasks = () => {
       Alert.alert('Please enter a valid date.');
       return;
     }
+
+    // console.log(title, deadline, category);
+    // return;
+
+    firestore()
+      .collection('Tasks')
+      .doc('ABC') // user id
+      .set({
+        title,
+        deadline,
+        category,
+      })
+      .then(() => {
+        console.log('Task added!');
+      });
   };
 
   return (
