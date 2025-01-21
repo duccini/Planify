@@ -21,7 +21,7 @@ const DateInput = ({value, onChange, ...props}) => {
           style={styles.icon}
           source={require('@assets/calendar.png')}
         />
-        <Text>{value.toLocaleDateString('pt-BR') || 'Select Date...'}</Text>
+        <Text>{moment(value).format('DD/MM/YYYY') || 'Select Date...'}</Text>
       </Pressable>
 
       <DatePicker
