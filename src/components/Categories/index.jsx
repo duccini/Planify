@@ -6,7 +6,6 @@ import styles from './styles';
 const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   return (
     <FlatList
-      style={{marginTop: 16}}
       horizontal
       showsHorizontalScrollIndicator={false}
       data={categories}

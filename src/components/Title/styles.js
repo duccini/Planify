@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: colors.black,
-    paddingVertical: 24,
+    paddingTop: 12,
+    paddingBottom: 16,
   },
 
   thin: {

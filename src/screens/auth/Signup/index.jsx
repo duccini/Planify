@@ -86,29 +86,43 @@ const Signup = ({navigation}) => {
       <ScrollView showVerticalScrollIndicator={false}>
         <Title text="Join the hub!" />
 
-        <Input
-          onChangeText={val => handleOnChange(val, 'first_name')}
-          placeholder="First Name"
-        />
-        <Input
-          onChangeText={val => handleOnChange(val, 'last_name')}
-          placeholder="Last Name"
-        />
-        <Input
-          onChangeText={val => handleOnChange(val, 'email')}
-          placeholder="Email"
-          keyboardType="email-address"
-        />
-        <Input
-          onChangeText={val => handleOnChange(val, 'password')}
-          placeholder="Password"
-          secureTextEntry
-        />
-        <Input
-          onChangeText={val => handleOnChange(val, 'confirm_password')}
-          placeholder="Confirm Password"
-          secureTextEntry
-        />
+        <View style={styles.section}>
+          <Input
+            onChangeText={val => handleOnChange(val, 'first_name')}
+            placeholder="First Name"
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Input
+            onChangeText={val => handleOnChange(val, 'last_name')}
+            placeholder="Last Name"
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Input
+            onChangeText={val => handleOnChange(val, 'email')}
+            placeholder="Email"
+            keyboardType="email-address"
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Input
+            onChangeText={val => handleOnChange(val, 'password')}
+            placeholder="Password"
+            secureTextEntry
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Input
+            onChangeText={val => handleOnChange(val, 'confirm_password')}
+            placeholder="Confirm Password"
+            secureTextEntry
+          />
+        </View>
 
         <View style={styles.alerts}>
           <Checkbox checked={agreed} handleCheckbox={handleOnPress} />

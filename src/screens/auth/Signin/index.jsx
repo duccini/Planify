@@ -1,5 +1,5 @@
 import React, {memo, useState} from 'react';
-import {Alert, SafeAreaView, Text} from 'react-native';
+import {Alert, SafeAreaView, Text, View} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 import styles from './styles';
@@ -46,16 +46,21 @@ const Signin = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Title text="Welcome back!" />
 
-      <Input
-        onChangeText={val => handleOnChange(val, 'email')}
-        placeholder="Email"
-        keyboardType="email-address"
-      />
-      <Input
-        onChangeText={val => handleOnChange(val, 'password')}
-        placeholder="Password"
-        secureTextEntry
-      />
+      <View style={styles.section}>
+        <Input
+          onChangeText={val => handleOnChange(val, 'email')}
+          placeholder="Email"
+          keyboardType="email-address"
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Input
+          onChangeText={val => handleOnChange(val, 'password')}
+          placeholder="Password"
+          secureTextEntry
+        />
+      </View>
 
       <Button onPress={onSubmit}>Log in</Button>
 

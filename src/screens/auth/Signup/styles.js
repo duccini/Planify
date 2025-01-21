@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 
+  section: {
+    marginVertical: 6,
+  },
+
   footerText: {
     color: colors.midGrey,
     textAlign: 'center',

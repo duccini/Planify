@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 
   section: {
-    marginVertical: 24,
+    marginVertical: 12,
   },
 
   label: {
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontWeight: '400',
     marginHorizontal: 24,
+    marginBottom: 8,
   },
 });
 

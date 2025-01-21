@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
   },
 
+  section: {
+    marginVertical: 6,
+  },
+
   footerText: {
     color: colors.midGrey,
     textAlign: 'center',
