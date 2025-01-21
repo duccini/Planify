@@ -9,8 +9,8 @@ A TODO app with a Firebase Serveless Backend
 [X] - Stack Navigation
 [X] - Drawer Navigation
 [X] - Tab Navigation
-[X] - Firebase Auth
-[X] - Firebase Store
+[X] - Firebase Authentication
+[X] - Cloud Firestore
 
 ## Step 1: Start the Metro Server
 
