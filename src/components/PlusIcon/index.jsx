@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {Image, Pressable, Text, View} from 'react-native';
+import {Pressable, Text} from 'react-native';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 

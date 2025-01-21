@@ -1,6 +1,5 @@
 import React, {memo, useState} from 'react';
 import {Pressable, SafeAreaView, Image, Text, View, Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import moment from 'moment';
 
@@ -14,11 +13,11 @@ import styles from './styles';
 
 import categories from '../../../constants/categories';
 
-const AddTasks = () => {
+const AddTasks = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [deadline, setDeadline] = useState(new Date());
-  const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -27,9 +26,6 @@ const AddTasks = () => {
   const onSubmit = () => {
     const today = moment(new Date()).format('YYYY-MM-DD');
     const deadlineFormatted = moment(deadline).format('YYYY-MM-DD');
-
-    // console.log('deadlineFOrmatted: ', deadlineFormatted);
-    // console.log('today: ', today);
 
     if (!title) {
       Alert.alert('Please enter the task tile.');
@@ -42,8 +38,7 @@ const AddTasks = () => {
       return;
     }
 
-    // console.log(title, deadline, category);
-    // return;
+    setIsLoading(true);
 
     firestore()
       .collection('Tasks')
@@ -54,7 +49,15 @@ const AddTasks = () => {
         category,
       })
       .then(() => {
-        console.log('Task added!');
+        setIsLoading(false);
+
+        // WHY navigate only to Tabs ?
+        navigation.navigate('Tabs', {screen: 'Tasks'});
+      })
+      .catch(error => {
+        setIsLoading(false);
+        console.log('Error when adding task: ', error);
+        Alert.alert(error.message);
       });
   };
 
