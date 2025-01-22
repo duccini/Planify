@@ -21,7 +21,7 @@ import Button from '@components/Button';
 
 import styles from './styles';
 
-import categories from '../../../constants/categories';
+import categories from '@constants/categories';
 
 const AddTasks = ({navigation}) => {
   const [title, setTitle] = useState('');

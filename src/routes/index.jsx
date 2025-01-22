@@ -5,7 +5,7 @@ import React, {memo, useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
 
-import {setUser} from '../store/user';
+import {setUser} from '@store/user';
 
 import PublicRoutes from './PublicRoutes';
 import PrivateRoutes from './PrivateRoutes';
