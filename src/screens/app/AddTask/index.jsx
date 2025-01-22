@@ -1,4 +1,5 @@
 import React, {memo, useState} from 'react';
+import {useSelector} from 'react-redux';
 import {
   Pressable,
   SafeAreaView,
@@ -28,6 +29,8 @@ const AddTasks = ({navigation}) => {
   const [deadline, setDeadline] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
 
+  const user = useSelector(state => state.user.data);
+
   const handleGoBack = () => {
     navigation.goBack();
   };
@@ -49,10 +52,15 @@ const AddTasks = ({navigation}) => {
 
     setIsLoading(true);
 
+    // The add method adds the new document to your collection with a random
+    // unique ID. If you'd like to specify your own ID, call the set method on
+    //  a DocumentReference instead
+
     firestore()
       .collection('Tasks')
-      .doc('ABC') // user id
-      .set({
+      .add({
+        userId: user.uid,
+        checked: false,
         title,
         deadline,
         category,
