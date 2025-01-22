@@ -1,5 +1,14 @@
 import React, {memo, useState} from 'react';
-import {Pressable, SafeAreaView, Image, Text, View, Alert} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  Image,
+  Text,
+  View,
+  Alert,
+  ActivityIndicator,
+  ScrollView,
+} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import moment from 'moment';
 
@@ -53,6 +62,9 @@ const AddTasks = ({navigation}) => {
 
         // WHY navigate only to Tabs ?
         navigation.navigate('Tabs', {screen: 'Tasks'});
+        setTitle('');
+        setDeadline(new Date());
+        setCategory(null);
       })
       .catch(error => {
         setIsLoading(false);
@@ -70,37 +82,45 @@ const AddTasks = ({navigation}) => {
         <Image style={styles.icon} source={require('@assets/leftArrow.png')} />
       </Pressable>
 
-      <Title type="thin" text="Add New Task" />
+      <ScrollView>
+        <Title type="thin" text="Add New Task" />
 
-      <View style={styles.section}>
-        <Text style={styles.label}>Describe the task</Text>
-        <Input
-          value={title}
-          onChangeText={setTitle}
-          outline
-          placeholder="Type here ..."
-        />
-      </View>
+        <View style={styles.section}>
+          <Text style={styles.label}>Describe the task</Text>
+          <Input
+            value={title}
+            onChangeText={setTitle}
+            outline
+            placeholder="Type here ..."
+          />
+        </View>
 
-      <View style={styles.section}>
-        <Text style={styles.label}>Type</Text>
-        <Categories
-          categories={categories}
-          selectedCategory={category}
-          onCategoryPress={setCategory}
-        />
-      </View>
+        <View style={styles.section}>
+          <Text style={styles.label}>Type</Text>
+          <Categories
+            categories={categories}
+            selectedCategory={category}
+            onCategoryPress={setCategory}
+          />
+        </View>
 
-      <View style={styles.section}>
-        <Text style={styles.label}>Deadline</Text>
-        <DateInput value={deadline} onChange={setDeadline} />
-      </View>
+        <View style={styles.section}>
+          <Text style={styles.label}>Deadline</Text>
+          <DateInput value={deadline} onChange={setDeadline} />
+        </View>
 
-      <View style={styles.button}>
-        <Button style={styles.button} type="blue" onPress={onSubmit}>
-          Add Task
-        </Button>
-      </View>
+        {isLoading ? (
+          <View style={styles.section}>
+            <ActivityIndicator />
+          </View>
+        ) : (
+          <View style={styles.button}>
+            <Button style={styles.button} type="blue" onPress={onSubmit}>
+              Add Task
+            </Button>
+          </View>
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 };
