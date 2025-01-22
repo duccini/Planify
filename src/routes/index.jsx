@@ -1,8 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, {memo, useState, useEffect} from 'react';
-import auth from '@react-native-firebase/auth';
 import 'react-native-gesture-handler';
+import React, {memo, useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import auth from '@react-native-firebase/auth';
+
+import {setUser} from '../store/user';
 
 import PublicRoutes from './PublicRoutes';
 import PrivateRoutes from './PrivateRoutes';
@@ -10,11 +13,18 @@ import PrivateRoutes from './PrivateRoutes';
 const Routes = () => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+
+  // Redux State - Set user with Dispatch
+  const user = useSelector(state => state.user.data);
+  const dispatch = useDispatch();
+
+  // When we call dispatch with a function inside it will redirect the call
+  // to redux. If we call directly `setUser()` it will not work, we need wrap
+  // inside `dispatch`
 
   // Handle user state changes
   function handleAuthStateChanged(userData) {
-    setUser(userData);
+    dispatch(setUser(userData));
     if (initializing) {
       setInitializing(false);
     }
