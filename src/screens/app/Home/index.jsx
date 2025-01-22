@@ -4,15 +4,17 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import firestore from '@react-native-firebase/firestore';
 
+import {setTasks} from '@store/tasks';
+
 import Header from '@components/Header';
 import PlusIcon from '@components/PlusIcon';
 import Title from '@components/Title';
 
 import styles from './styles';
-import setTasks from '@store/tasks';
 
 const Home = () => {
   const user = useSelector(state => state.user.data);
+  const tasks = useSelector(state => state.tasks.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,21 +23,18 @@ const Home = () => {
       .where('userId', '==', user.uid)
       .get()
       .then(querySnapshot => {
-        console.log('Total tasks: ', querySnapshot.size);
         const tasksLists = [];
 
         querySnapshot.forEach(documentSnapshot => {
-          tasksLists.push(documentSnapshot.data());
-          // console.log(
-          //   'User ID: ',
-          //   documentSnapshot.id,
-          //   documentSnapshot.data(),
-          // );
+          tasksLists.push({
+            uid: documentSnapshot.id,
+            ...(documentSnapshot.data() || {}),
+          });
         });
 
         dispatch(setTasks(tasksLists));
       });
-  }, [user]);
+  }, [user, dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>

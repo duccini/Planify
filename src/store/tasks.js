@@ -3,9 +3,8 @@ import {createSlice} from '@reduxjs/toolkit';
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState: {
-    data: [],
+    data: null,
   },
-  // Reducers are funcions that update the initial state
   reducers: {
     setTasks: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
