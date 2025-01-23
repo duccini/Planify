@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, View} from 'react-native';
+import {Pressable, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import firestore from '@react-native-firebase/firestore';
@@ -14,7 +14,7 @@ import StatusCard from '@components/StatusCard';
 import styles from './styles';
 import moment from 'moment';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [counts, setCounts] = useState({});
 
   const user = useSelector(state => state.user.data);
@@ -84,6 +84,16 @@ const Home = () => {
           />
           <StatusCard label="Quick Win" count={counts.quickWin} />
         </View>
+
+        <Pressable
+          style={styles.box}
+          onPress={() => navigation.navigate('Tasks')}>
+          <Text style={styles.boxTitle}>Check all tasks</Text>
+          <Text style={styles.boxSubTitle}>
+            See all tasks and filter them by categories that you have selected
+            when creating them
+          </Text>
+        </Pressable>
       </ScrollView>
 
       <PlusIcon />
