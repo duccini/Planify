@@ -1,4 +1,4 @@
-import React, {memo, useEffect} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -12,16 +12,16 @@ import Title from '@components/Title';
 import StatusCard from '@components/StatusCard';
 
 import styles from './styles';
+import moment from 'moment';
 
 const Home = () => {
+  const [counts, setCounts] = useState({});
+
   const user = useSelector(state => state.user.data);
   const tasks = useSelector(state => state.tasks.data);
   const toUpdate = useSelector(state => state.tasks.toUpdate);
 
   const dispatch = useDispatch();
-
-  console.log('tasks: ', tasks);
-  console.log('toUpdate: ', toUpdate);
 
   useEffect(() => {
     firestore()
@@ -42,6 +42,32 @@ const Home = () => {
       });
   }, [user, dispatch, toUpdate]);
 
+  useEffect(() => {
+    if (tasks?.length) {
+      const highPriority = tasks.filter(
+        task => task.category === 'urgent' || task.category === 'important',
+      );
+
+      const today = moment(new Date()).format('YYYY-MM-DD');
+
+      // moments works with timestamp in miliseconds not seconds
+
+      const dueDeadline = tasks.filter(task => {
+        const deadline = task.deadline.seconds * 1000;
+        const deadlineFormatted = moment(deadline).format('YYYY-MM-DD');
+        return moment(deadlineFormatted).isBefore(today);
+      });
+
+      const quickWin = tasks.filter(task => task.category === 'quick_task');
+
+      setCounts({
+        highPriority: highPriority.length,
+        dueDeadline: dueDeadline.length,
+        quickWin: quickWin.length,
+      });
+    }
+  }, [tasks]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Home" />
@@ -50,9 +76,13 @@ const Home = () => {
         <Title type="thin" text="Daily Tasks" />
 
         <View style={styles.statusCardList}>
-          <StatusCard label="High Priority" count={3} />
-          <StatusCard type="error" label="Due Deadline" count={3} />
-          <StatusCard label="Quick Win" count={3} />
+          <StatusCard label="High Priority" count={counts.highPriority} />
+          <StatusCard
+            type="error"
+            label="Due Deadline"
+            count={counts.dueDeadline}
+          />
+          <StatusCard label="Quick Win" count={counts.quickWin} />
         </View>
       </ScrollView>
 
