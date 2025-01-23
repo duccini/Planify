@@ -1,5 +1,5 @@
 import React, {memo, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   Pressable,
   SafeAreaView,
@@ -22,6 +22,7 @@ import Button from '@components/Button';
 import styles from './styles';
 
 import categories from '@constants/categories';
+import {setToUpdate} from '@store/tasks';
 
 const AddTasks = ({navigation}) => {
   const [title, setTitle] = useState('');
@@ -30,6 +31,7 @@ const AddTasks = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const user = useSelector(state => state.user.data);
+  const dispatch = useDispatch();
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -67,7 +69,7 @@ const AddTasks = ({navigation}) => {
       })
       .then(() => {
         setIsLoading(false);
-
+        dispatch(setToUpdate());
         // WHY navigate only to Tabs ?
         navigation.navigate('Tabs', {screen: 'Tasks'});
         setTitle('');

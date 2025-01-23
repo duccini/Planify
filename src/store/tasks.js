@@ -15,7 +15,7 @@ export const tasksSlice = createSlice({
       state.data = action.payload;
     },
     setToUpdate: state => {
-      state.toUpdate = Math.random(); // WTF is this ??
+      state.toUpdate = Math.random(); // arbitrary state to update Tasks slice
     },
   },
 });
